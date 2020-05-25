@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UML_PoliAmbulatorio">
+  <ClassDiagramComponents>
+    <Class name="CAmbulatorio" package="uml" visibility="public" xPosition="37.0" yPosition="40.0">
+      <Fields>
+        <Field name="codiceIdentificativo" type="int" visibility="package"/>
+        <Field name="posizione" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CDate" package="uml" visibility="public" xPosition="357.0" yPosition="230.0">
+      <Fields>
+        <Field name="numGiorni" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CMedico" package="uml" visibility="public" xPosition="37.0" yPosition="211.0">
+      <Fields>
+        <Field name="specializzazione" type="String" visibility="package"/>
+        <Field name="dataLaurea" type="CDate" visibility="package"/>
+        <Field name="orarioInizioVisite" type="int" visibility="package"/>
+        <Field name="orarioFineVisite" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CPaziente" package="uml" visibility="public" xPosition="336.0" yPosition="40.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="package"/>
+        <Field name="codiceTesseraSanitaria" type="String" visibility="package"/>
+        <Field name="patologia" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CSocio" package="uml" visibility="public" xPosition="346.0" yPosition="424.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="package"/>
+        <Field name="inizioPartecipazione" type="CDate" visibility="package"/>
+        <Field name="quotaVersata" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CVisita" package="uml" visibility="public" xPosition="604.0" yPosition="31.0">
+      <Fields>
+        <Field name="descrizione" type="String" visibility="package"/>
+        <Field name="dataVisita" type="CDate" visibility="package"/>
+        <Field name="orarioInizio" type="int" visibility="package"/>
+        <Field name="orarioFine" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="UML_PoliAmbulatorio" package="uml" visibility="public" xPosition="20.0" yPosition="443.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="String[]" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CVisite" package="" visibility="public" xPosition="665.0" yPosition="220.0">
+      <Fields>
+        <Field name="list" type="CVisita[]" visibility="private"/>
+        <Field name="numeL" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="viusalizza" returnType="CPaziente" visibility="public">
+          <Argument type="CPaziente" name="nuovo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CPazienti" package="" visibility="public" xPosition="665.0" yPosition="443.0">
+      <Fields>
+        <Field name="list" type="CPaziente[]" visibility="private"/>
+        <Field name="numEl" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="liberi" returnType="CPazienti[]" visibility="public">
+          <Argument type="CData" name="decisa"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="visualizza" source="CVisite" target="uml.CPaziente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataVisita" source="uml.CVisita" target="uml.CDate" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="lista di pazienti" source="CVisite" target="uml.CVisita" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="inizioPartecipazione" source="uml.CSocio" target="uml.CDate" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="liberi()" source="CPazienti" target="uml.CDate" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lista" source="CPazienti" target="uml.CPaziente" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="dataLaurea" source="uml.CMedico" target="uml.CDate" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
